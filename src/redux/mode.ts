@@ -1,6 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-const initialState = {
+type initialStateType = {
+    mode: string,
+    userId: string
+}
+
+const initialState: initialStateType = {
     mode: 'dark',
     userId: ''
 }
@@ -16,5 +21,8 @@ export const globalSlice = createSlice({
 })
 
 export const {setMode} = globalSlice.actions
+
+export const selectMode = (state: initialStateType) => state.mode
+export const selectUserId = (state: initialStateType) => state.userId
 
 export default globalSlice.reducer
