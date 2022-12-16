@@ -5,9 +5,16 @@ type initialStateType = {
     userId: string
 }
 
+type stateSelectorType = {
+    mode: {
+        mode: string,
+        userId: string
+    }
+}
+
 const initialState: initialStateType = {
     mode: 'dark',
-    userId: ''
+    userId: '63701cc1f03239b7f700000e'
 }
 
 export const globalSlice = createSlice({
@@ -22,7 +29,7 @@ export const globalSlice = createSlice({
 
 export const {setMode} = globalSlice.actions
 
-export const selectMode = (state: initialStateType) => state.mode
-export const selectUserId = (state: initialStateType) => state.userId
+export const selectMode = (state: stateSelectorType) => state.mode.mode
+export const selectUserId = (state: stateSelectorType) => state.mode.userId
 
 export default globalSlice.reducer
