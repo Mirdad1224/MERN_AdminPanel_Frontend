@@ -10,4 +10,7 @@ export type User = {
   phoneNumber?: string;
   transactions?: string[];
   role: string;
+  createdAt: string,
+  updatedAt: string,
+  __v: number
 };
