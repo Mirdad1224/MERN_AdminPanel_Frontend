@@ -23,9 +23,10 @@ import {
   MenuItem,
   useTheme,
 } from "@mui/material";
+import { User } from "../types/user.type";
 
 type NavbarType = {
-  user: any,
+  user: User,
   isSidebarOpen: boolean,
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>> 
 }
@@ -110,7 +111,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }: NavbarType) => {
                   fontSize="0.75rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  {user.occupation}
+                  {user?.occupation}
                 </Typography>
               </Box>
               <ArrowDropDownOutlined
