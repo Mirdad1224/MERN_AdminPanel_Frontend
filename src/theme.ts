@@ -1,4 +1,6 @@
+import { PaletteMode } from "@mui/material";
 import { colorPallete } from "./types/colorPallete.type";
+// import {PaletteMode}
 
 // color design tokens export
 export const tokensDark: colorPallete = {
@@ -62,7 +64,7 @@ function reverseTokens(tokensDark: colorPallete): colorPallete {
 export const tokensLight = reverseTokens(tokensDark);
 
 // mui theme settings
-export const themeSettings = (mode: string) => {
+export const themeSettings = (mode: PaletteMode) => {
   return {
     palette: {
       mode: mode,
@@ -82,7 +84,7 @@ export const themeSettings = (mode: string) => {
               ...tokensDark.grey,
               main: tokensDark.grey[500],
             },
-            background: {
+            bg: {
               default: tokensDark.primary[600],
               alt: tokensDark.primary[500],
             },
@@ -103,7 +105,7 @@ export const themeSettings = (mode: string) => {
               ...tokensLight.grey,
               main: tokensDark.grey[500],
             },
-            background: {
+            bg: {
               default: tokensDark.grey[0],
               alt: tokensDark.grey[50],
             },
