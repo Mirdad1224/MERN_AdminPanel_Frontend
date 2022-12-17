@@ -117,7 +117,7 @@ const Sidebar = ({
   }, [pathname]);
 
   return (
-    <Box component="nav">
+    <Box component="nav" height='100%'>
       {isSidebarOpen && (
         <Drawer
           open={isSidebarOpen}
@@ -154,7 +154,7 @@ const Sidebar = ({
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
+                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 2rem" }}>
                       {text}
                     </Typography>
                   );
@@ -201,7 +201,7 @@ const Sidebar = ({
             </List>
           </Box>
 
-          <Box position="absolute" bottom="2rem">
+          <Box position="static" bottom="3rem" pb='1rem'>
             <Divider />
             <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box
