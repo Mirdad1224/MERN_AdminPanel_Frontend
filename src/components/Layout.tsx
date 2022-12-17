@@ -18,7 +18,7 @@ const Layout = () => {
     <Box
       display={isNonMobile ? "flex" : "block"}
       width="100%"
-      height="100%"
+      minHeight="100%"
       bgcolor={
         theme.palette.mode === "dark"
           ? theme.palette?.bg?.default
