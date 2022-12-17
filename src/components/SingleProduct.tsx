@@ -53,7 +53,7 @@ const Product = ({
       </CardContent>
       <CardActions>
         <Button
-          color="primary"
+          color="info"
           size="small"
           onClick={() => setIsExpanded(!isExpanded)}
         >
