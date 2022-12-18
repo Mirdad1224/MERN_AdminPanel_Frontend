@@ -1,8 +1,9 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { useGetGeographyQuery } from "../redux/api";
 import Header from "../components/Header";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { geoData } from "../data/geoData";
+import Loading from '../components/Loading'
 
 const Geography = () => {
   const theme = useTheme();
@@ -91,7 +92,7 @@ const Geography = () => {
             ]}
           />
         ) : (
-          <Typography color="#b9a7a7">Loading...</Typography>
+          <Loading />
         )}
       </Box>
     </Box>
