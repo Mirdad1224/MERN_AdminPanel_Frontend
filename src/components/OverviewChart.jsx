@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { ResponsiveLine } from "@nivo/line";
-import { useTheme, Typography } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { useGetSalesQuery } from "../redux/api";
+import Loading from '../components/Loading'
 
 const OverviewChart = ({ isDashboard = false, view }) => {
   const theme = useTheme();
@@ -45,7 +46,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!data || isLoading)
-    return <Typography color="#928686">Loading...</Typography>;
+    return <Loading />;
 
   return (
     <ResponsiveLine
