@@ -5,7 +5,7 @@ import {
 import Header from "../components/Header";
 import { useGetProductsQuery } from "../redux/api";
 import SingleProduct from '../components/SingleProduct'
-import Typography from "@mui/material/Typography";
+import Loading from '../components/Loading'
 
 
 const Products = () => {
@@ -53,7 +53,7 @@ const Products = () => {
             )}
           </Box>
         ) : (
-          <Typography color='#a19696'>Loading...</Typography>
+          <Loading />
         )}
       </Box>
     );
