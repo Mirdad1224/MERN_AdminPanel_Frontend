@@ -1,14 +1,13 @@
 import { ResponsivePie } from "@nivo/pie";
 import { Box, Typography, useTheme } from "@mui/material";
 import { useGetSalesQuery } from "../redux/api";
-import Loading from '../components/Loading'
+import Loading from "../components/Loading";
 
 const BreakdownChart = ({ isDashboard = false }) => {
   const { data, isLoading } = useGetSalesQuery(null);
   const theme = useTheme();
 
-  if (!data || isLoading)
-    return <Loading />;
+  if (!data || isLoading) return <Loading />;
 
   const colors = [
     theme.palette.secondary[500],
@@ -117,15 +116,14 @@ const BreakdownChart = ({ isDashboard = false }) => {
           },
         ]}
       />
-      {/* @ts-ignore */}
       <Box
         position="absolute"
         top="50%"
         left="50%"
         color={theme.palette.secondary[400]}
         textAlign="center"
-        pointerEvents="none"
         sx={{
+          pointerEvents: "none",
           transform: isDashboard
             ? "translate(-75%, -170%)"
             : "translate(-50%, -100%)",
