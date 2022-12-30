@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -9,15 +9,19 @@ import { useGetUserQuery } from "../redux/api";
 
 const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(isNonMobile);
   const userId = useSelector(selectUserId);
   const { data } = useGetUserQuery(userId);
   const theme = useTheme();
 
+  useEffect(() => {
+    !isNonMobile && setIsSidebarOpen(false)
+  }, [isNonMobile])
+
   return (
     <Box
       display={isNonMobile ? "flex" : "block"}
-      width="100%"
+      maxWidth="100%"
       minHeight="100%"
       bgcolor={
         theme.palette.mode === "dark"
