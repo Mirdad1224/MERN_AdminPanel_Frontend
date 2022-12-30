@@ -6,7 +6,13 @@ import {
   PersonAdd,
   Traffic,
 } from "@mui/icons-material";
-import { Button, Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import {
+  Button,
+  Box,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { DataGrid, GridRenderCellParams } from "@mui/x-data-grid";
 import BreakdownChart from "../components/BreakdownChart";
 import OverviewChart from "../components/OverviewChart";
@@ -16,6 +22,7 @@ import StatBox from "../components/StatBox";
 const Dashboard = () => {
   const theme = useTheme();
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
+  const isMobile = useMediaQuery("(max-width: 700px)");
   const { data, isLoading } = useGetDashboardQuery(null);
 
   const columns = [
@@ -52,23 +59,24 @@ const Dashboard = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Box display='flex' alignItems='center' justifyContent='space-between'>
+      <Box display="flex" alignItems="center" justifyContent="space-between">
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-
-        <Box>
-          <Button
-            sx={{
-              backgroundColor: theme.palette.secondary.light,
-              color: theme.palette?.bg?.alt,
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
-          >
-            <DownloadOutlined sx={{ mr: "10px" }} />
-            Download Reports
-          </Button>
-        </Box>
+        {!isMobile && (
+          <Box>
+            <Button
+              sx={{
+                backgroundColor: theme.palette.secondary.light,
+                color: theme.palette?.bg?.alt,
+                fontSize: "14px",
+                fontWeight: "bold",
+                padding: "10px 20px",
+              }}
+            >
+              <DownloadOutlined sx={{ mr: "10px" }} />
+              Download Reports
+            </Button>
+          </Box>
+        )}
       </Box>
 
       <Box
