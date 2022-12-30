@@ -22,22 +22,27 @@ import {
   Menu,
   MenuItem,
   useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { User } from "../types/user.type";
 
 type NavbarType = {
-  user: User,
-  isSidebarOpen: boolean,
-  setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>> 
-}
+  user: User;
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }: NavbarType) => {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const isMobile = useMediaQuery("(max-width: 700px)");
 
-  const [anchorEl, setAnchorEl] = useState<(EventTarget & Element) | null>(null);
+  const [anchorEl, setAnchorEl] = useState<(EventTarget & Element) | null>(
+    null
+  );
   const isOpen = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent) => setAnchorEl(event.currentTarget);
+  const handleClick = (event: React.MouseEvent) =>
+    setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
   return (
@@ -54,16 +59,21 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }: NavbarType) => {
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
-          <FlexBetween sx={{backgroundColor: theme.palette?.bg?.alt,
-            borderRadius: "9px",
-            gap: "3rem",
-            p: "0.1rem 1.5rem"}} 
-          >
-            <InputBase placeholder="Search..." />
-            <IconButton>
-              <Search />
-            </IconButton>
-          </FlexBetween>
+          {!isMobile && (
+            <FlexBetween
+              sx={{
+                backgroundColor: theme.palette?.bg?.alt,
+                borderRadius: "9px",
+                gap: "3rem",
+                p: "0.1rem 1.5rem",
+              }}
+            >
+              <InputBase placeholder="Search..." />
+              <IconButton>
+                <Search />
+              </IconButton>
+            </FlexBetween>
+          )}
         </FlexBetween>
 
         {/* RIGHT SIDE */}
@@ -75,10 +85,11 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }: NavbarType) => {
               <LightModeOutlined sx={{ fontSize: "25px" }} />
             )}
           </IconButton>
-          <IconButton>
-            <SettingsOutlined sx={{ fontSize: "25px" }} />
-          </IconButton>
-
+          {!isMobile && (
+            <IconButton>
+              <SettingsOutlined sx={{ fontSize: "25px" }} />
+            </IconButton>
+          )}
           <FlexBetween>
             <Button
               onClick={handleClick}
