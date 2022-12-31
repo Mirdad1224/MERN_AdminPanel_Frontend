@@ -9,6 +9,7 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import {
@@ -111,6 +112,7 @@ const Sidebar = ({
   const [active, setActive] = useState<String>("");
   const navigate = useNavigate();
   const theme = useTheme();
+  const isMedium = useMediaQuery("(max-width: 1000px)");
 
   useEffect(() => {
     setActive(pathname.substring(1));
@@ -166,6 +168,7 @@ const Sidebar = ({
                     <ListItemButton
                       onClick={() => {
                         navigate(`/${lcText}`);
+                        isMedium && setIsSidebarOpen(false)
                         setActive(lcText);
                       }}
                       sx={{
