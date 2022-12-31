@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -14,10 +14,6 @@ const Layout = () => {
   const { data } = useGetUserQuery(userId);
   const theme = useTheme();
 
-  useEffect(() => {
-    !isNonMobile && setIsSidebarOpen(false)
-  }, [isNonMobile])
-
   return (
     <Box
       display={isNonMobile ? "flex" : "block"}
@@ -28,6 +24,7 @@ const Layout = () => {
           ? theme.palette?.bg?.default
           : theme.palette?.bg?.alt
       }
+      paddingBottom='2rem'
     >
       <Sidebar
         user={data || {}}
